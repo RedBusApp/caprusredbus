@@ -6,9 +6,9 @@ body {
 }
 #signInLink {
 	position:fixed;
-	right:50px;
+	right:45px;
     color: #305AA0;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 550;
     margin-right: 3px;
 }

@@ -11,7 +11,7 @@
 </head>
 <body>
 <div >
-<a href="#"  id="signInLink">Sign Up / Sign In</a>
+<a href="#"  id="signInLink"><span>Sign Up / Sign In</span></a>
 </div>
 </body>
 </html>
