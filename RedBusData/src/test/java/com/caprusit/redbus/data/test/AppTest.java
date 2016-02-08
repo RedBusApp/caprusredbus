@@ -1,4 +1,4 @@
-package com.caprusit.redbus.RedBusService;
+package com.caprusit.redbus.data.test;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
