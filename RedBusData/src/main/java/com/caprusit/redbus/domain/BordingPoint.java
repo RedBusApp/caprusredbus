@@ -21,6 +21,7 @@ public class BordingPoint implements Serializable {
 		return boardingPointId;
 	}
 
+	
 	public void setBoardingPointId(int boardingPointId) {
 		this.boardingPointId = boardingPointId;
 	}

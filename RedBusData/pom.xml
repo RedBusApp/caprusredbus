@@ -51,6 +51,14 @@
 			<artifactId>log4j</artifactId>
 			<version>${log4j-version}</version>
 		</dependency>
+		
+		<!-- Dependency for spring transaction jar file -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${springFrameWork-version}</version>
+		</dependency>
+		
 
 		<!-- Dependency for OJDBC14.jar jar file -->
 		<dependency>
