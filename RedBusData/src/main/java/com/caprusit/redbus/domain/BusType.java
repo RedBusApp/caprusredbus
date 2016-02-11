@@ -23,7 +23,7 @@ public class BusType implements Serializable {
 		super();
 		this.busTypeId = busTypeId;
 	}
-
+ 
 	@Id
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@GeneratedValue(generator = "increment")

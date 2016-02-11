@@ -14,7 +14,7 @@ public class CurdOperationUtility {
 	public void setSessionFactory(SessionFactory sessionFactory) {
 
 		this.sessionFactory = sessionFactory;
-	}
+	} 
 
 	/**
 	 * This method is to save any object into database

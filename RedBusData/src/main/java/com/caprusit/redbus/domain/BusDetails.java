@@ -18,7 +18,7 @@ public class BusDetails implements Serializable{
 	public BusDetails() {
 		super();		
 	}
-	
+	 
 	public BusDetails(int busId) {
 		super();
 		this.busId = busId;

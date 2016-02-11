@@ -1,0 +1,99 @@
+body {
+    font: 400 13px/16px redBus,Arial,Helvetica,sans-serif;
+    color: #333;
+    height: 100%;
+     background-color: #F5F5F5;
+     padding-top: 10px;
+}
+#signInLink {
+	position:fixed;
+	right:45px;
+    color: #305AA0;
+    font-size: 14px;
+    font-weight: 550;
+    margin-right: 3px;
+    
+}
+.modal-content{
+	top:80px;
+	border-radius: 0px !important;
+	/* padding: 0px 20px 0px 20px ; */
+}
+#main_content{
+	 border-left:thin solid #dcdcdc;
+}
+#image_content
+{
+/* 	padding-left:30px;
+padding-top: 60px;	 */
+padding-top: 60px;
+text-align: center;
+}
+#signin_action{
+	float: right;
+	color: red;
+}
+#modal-header{
+	padding-left: -3px;
+	padding-right: -3px;
+}
+.modal-header{
+	height: 80px;
+}
+#email_id,#password_id { 
+    height: 35px;  
+    width :210px; 
+     background-color: transparent;  
+    border-width: 0px 0px 1px 0px;  
+    border-color: black; 
+    outline:0;
+  } 
+  /* i {
+  height: 20px;
+  background-color: transparent;
+  } */
+  #signin_div{
+  }
+  .ads_div{
+    height: 80px;
+    /* padding-top: 10px;
+    background-color: red; */
+  }
+  .search_bus_div{
+  height: 300px;
+  }
+  #search_id{
+  height :30px;
+  width: 270px;
+  }
+  
+  #from_date_div{
+  position :relative;
+  float:left;
+  height:160px;
+  width:280px;
+  }
+  #direction_div{
+   position:relative;
+  float:left;
+  top:30px;
+  padding-left:10px;
+  font-size:25px;
+  height:160px;
+  width:50px;
+  }
+  #to_date_div{
+  position:relative;
+  float:left;
+  height:185px;
+  width:272px;
+  }
+  #search_button{
+  width: 150px;
+  float: right;
+  }
+  #home_link{
+  color: black;
+  }
+  
+

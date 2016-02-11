@@ -5,5 +5,5 @@ import java.util.List;
 public interface AutoCompleteBusStops_Data {
 	
 	List<Object> getAllBusStops();
-
+ 
 }
