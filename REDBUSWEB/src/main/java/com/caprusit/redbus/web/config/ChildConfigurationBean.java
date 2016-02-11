@@ -14,7 +14,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-
+@ComponentScan(basePackages={"com.caprusit.redbus.web.controller"})
 public class ChildConfigurationBean extends WebMvcConfigurerAdapter {
 	
 	/**

@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.caprusit.redbus</groupId>
+	<artifactId>RedBusData</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>RedBusData</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+		<!-- properties to maintain versions of technologies used -->
+		<springFrameWork-version>4.2.1.RELEASE</springFrameWork-version>
+		<hibernate-version>4.3.11.Final</hibernate-version>
+		<log4j-version>1.2.17</log4j-version>
+
+	</properties>
+
+	<dependencies>
+
+		<!-- Dependency for Junit jar for junit testing (unit testing) -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- Dependency for hibernate core jar file -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-version}</version>
+		</dependency>
+
+		<!-- Dependency for spring context jar file -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${springFrameWork-version}</version>
+		</dependency>
+		
+		<!-- Dependency for spring transaction jar file -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${springFrameWork-version}</version>
+		</dependency>
+		
+		<!-- Dependency for spring orm jar file -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springFrameWork-version}</version>
+		</dependency>
+
+		<!-- Dependency for log4J jar file -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+
+		
+
+
+		<!-- Dependency for OJDBC14.jar jar file -->
+		<dependency>
+			<groupId>oracle.jdbc.driver</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<scope>system</scope>
+			<version>10.2.0.1.0</version>
+			<systemPath>${basedir}\src\lib\ojdbc14.jar</systemPath>
+		</dependency>
+
+
+	</dependencies>
+
+</project>
