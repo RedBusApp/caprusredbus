@@ -10,6 +10,12 @@ import com.caprusit.redbus.service.utility.JsonUtility;
 @Service
 public class AutoCompleteBusStops_ServiceImpl implements AutoCompleteBusStops_Service{
 
+	
+	public AutoCompleteBusStops_ServiceImpl() {
+		super();
+		System.out.println("autocomplete bus stop crearted");
+	}
+
 	@Autowired
 	private AutoCompleteBusStops_Data autoCompleteBusStopsData;
 	

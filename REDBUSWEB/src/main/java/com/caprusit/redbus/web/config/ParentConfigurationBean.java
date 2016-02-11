@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
@@ -21,7 +20,7 @@ import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import com.caprusit.redbus.data.utility.CurdOperationUtility;
 
 @Configuration
-@ComponentScan(basePackages={"com.caprusit.redbus.data","com.caprusit.redbus.service"})
+//@ComponentScan(basePackages={"com.caprusit.redbus.data","com.caprusit.redbus.service"})
 public class ParentConfigurationBean {
 	
 	@Value("${driver_class}")

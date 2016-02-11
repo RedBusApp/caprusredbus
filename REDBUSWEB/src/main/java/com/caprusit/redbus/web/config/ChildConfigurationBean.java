@@ -14,9 +14,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan(basePackages={"com.caprusit.redbus.web.controller"})
+@ComponentScan(basePackages = { "com.caprusit.redbus" })
 public class ChildConfigurationBean extends WebMvcConfigurerAdapter {
-	
+
 	/**
 	 * Bean for view resolver
 	 * */
@@ -29,7 +29,7 @@ public class ChildConfigurationBean extends WebMvcConfigurerAdapter {
 
 		return viewResolve;
 	}
-	
+
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("/resources/**").addResourceLocations(
@@ -38,7 +38,7 @@ public class ChildConfigurationBean extends WebMvcConfigurerAdapter {
 
 	@Override
 	public void configureDefaultServletHandling(
-			DefaultServletHandlerConfigurer configurer) {   
+			DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
 
