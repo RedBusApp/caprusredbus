@@ -14,7 +14,7 @@
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <!-- properties to maintain versions of technologies used -->
+		<!-- properties to maintain versions of technologies used -->
 		<springFrameWork-version>4.2.1.RELEASE</springFrameWork-version>
 		<hibernate-version>4.3.11.Final</hibernate-version>
 		<log4j-version>1.2.17</log4j-version>
@@ -42,14 +42,7 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>${springFrameWork-version}</version>			
-		</dependency>
-
-		<!-- Dependency for log4J jar file -->
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>${log4j-version}</version>
+			<version>${springFrameWork-version}</version>
 		</dependency>
 		
 		<!-- Dependency for spring transaction jar file -->
@@ -59,6 +52,22 @@
 			<version>${springFrameWork-version}</version>
 		</dependency>
 		
+		<!-- Dependency for spring orm jar file -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${springFrameWork-version}</version>
+		</dependency>
+
+		<!-- Dependency for log4J jar file -->
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j-version}</version>
+		</dependency>
+
+		
+
 
 		<!-- Dependency for OJDBC14.jar jar file -->
 		<dependency>
