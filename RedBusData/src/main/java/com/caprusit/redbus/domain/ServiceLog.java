@@ -15,6 +15,15 @@ public class ServiceLog implements Serializable {
 
 	private static final long serialVersionUID = -1366352952294686961L;
 
+	public ServiceLog() {
+		super();		
+	}
+	
+	public ServiceLog(long serviceLogId) {
+		super();
+		this.serviceLogId = serviceLogId;
+	}
+
 	@Id
 	private long serviceLogId;
 	private int operatorId;

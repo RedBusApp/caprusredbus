@@ -12,6 +12,15 @@ public class PassengerDetails  implements Serializable{
 	
 	private static final long serialVersionUID = -3922696473060189130L;
 	
+	public PassengerDetails() {
+		super();		
+	}
+	
+	public PassengerDetails(long passengerId) {
+		super();
+		this.passengerId = passengerId;
+	}
+
 	@Id
 	private long passengerId;
 	

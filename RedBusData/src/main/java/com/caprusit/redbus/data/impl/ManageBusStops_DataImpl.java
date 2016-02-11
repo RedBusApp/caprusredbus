@@ -1,19 +1,18 @@
 package com.caprusit.redbus.data.impl;
 
 import org.apache.log4j.Logger;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.caprusit.redbus.data.ManageBusStops_Data;
+import com.caprusit.redbus.data.utility.CurdOperationUtility;
 import com.caprusit.redbus.domain.BusStop;
 
 @Repository
 public class ManageBusStops_DataImpl implements ManageBusStops_Data{
 	
 	@Autowired
-	private SessionFactory sessionFactory;
+	private CurdOperationUtility curdOperationUtility;
 	
 	private Logger logger=Logger.getLogger(ManageBusStops_DataImpl.class);
 
@@ -23,10 +22,20 @@ public class ManageBusStops_DataImpl implements ManageBusStops_Data{
 	 * @param BusStop BusStop class object to save into database
 	 * @return int  id(primary key) of saved object
 	 */
-	@Transactional
 	public int saveBusStop(BusStop busStop) {
 		
-		return (Integer)sessionFactory.getCurrentSession().save(busStop);
+		return (Integer)curdOperationUtility.saveObjectToDatabase(busStop);
+	}
+	
+	/**
+	 * This method is to update BusStop class object in database
+	 * 
+	 * @param BusStop BusStop class object to save into database
+	 * @return int  update success message
+	 */
+	public int updateBusStop(BusStop busStop) {
+		
+		 return curdOperationUtility.updateObjectInDatabase(busStop);
 	}
 
 }

@@ -2,8 +2,11 @@ package com.caprusit.redbus.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -12,13 +15,32 @@ public class BusDetails implements Serializable{
 
 	private static final long serialVersionUID = -2886542859879563143L;
 
+	public BusDetails() {
+		super();		
+	}
+	
+	public BusDetails(int busId) {
+		super();
+		this.busId = busId;
+	}
+
 	@Id
 	private int busId;
 
 	private int busSerialNumber;
 	private String busName;
-	private short busTypeId;
-	private int routeId, operatorId;
+	
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="Bus_Type_Id_fk",nullable=false)
+	private BusType busType;
+    
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="operarot_id_fk",nullable=false,unique=false)
+	private Operator operator;
+    
+    @ManyToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name="route_id_fk",nullable=false,unique=false)
+	private Route route;
 
 	public int getBusId() {
 		return busId;
@@ -44,36 +66,38 @@ public class BusDetails implements Serializable{
 		this.busName = busName;
 	}
 
-	public short getBusTypeId() {
-		return busTypeId;
+	public BusType getBusType() {
+		return busType;
 	}
 
-	public void setBusTypeId(short busTypeId) {
-		this.busTypeId = busTypeId;
+	public void setBusType(BusType busType) {
+		this.busType = busType;
 	}
 
-	public int getRouteId() {
-		return routeId;
+	public Operator getOperator() {
+		return operator;
 	}
 
-	public void setRouteId(int routeId) {
-		this.routeId = routeId;
+	public void setOperator(Operator operator) {
+		this.operator = operator;
 	}
 
-	public int getOperatorId() {
-		return operatorId;
+	public Route getRoute() {
+		return route;
 	}
 
-	public void setOperatorId(int operatorId) {
-		this.operatorId = operatorId;
+	public void setRoute(Route route) {
+		this.route = route;
 	}
 
 	@Override
 	public String toString() {
 		return "BusDetails [busId=" + busId + ", busSerialNumber="
-				+ busSerialNumber + ", busName=" + busName + ", busTypeId="
-				+ busTypeId + ", routeId=" + routeId + ", operatorId="
-				+ operatorId + "]";
+				+ busSerialNumber + ", busName=" + busName + ", busType="
+				+ busType + ", operator=" + operator + ", route=" + route + "]";
 	}
+    
+    
 
+	
 }

@@ -15,6 +15,15 @@ public class Reservation implements Serializable {
 	
 	private static final long serialVersionUID = 6694162676550857890L;
 	
+	public Reservation() {
+		super();		
+	}
+	
+	public Reservation(long reservationId) {
+		super();
+		this.reservationId = reservationId;
+	}
+
 	@Id
 	private long reservationId;
 	

@@ -14,6 +14,15 @@ import org.hibernate.annotations.GenericGenerator;
 public class BusType implements Serializable {
 
 	private static final long serialVersionUID = -600245986737819685L;
+	
+	public BusType() {
+		super();
+		
+	}
+	public BusType(short busTypeId) {
+		super();
+		this.busTypeId = busTypeId;
+	}
 
 	@Id
 	@GenericGenerator(name = "increment", strategy = "increment")

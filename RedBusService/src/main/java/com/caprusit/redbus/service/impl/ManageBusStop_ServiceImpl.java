@@ -21,4 +21,9 @@ public class ManageBusStop_ServiceImpl implements ManageBusStop_Service{
 		return manageBusStopData.saveBusStop(busStop);
 	}
 
+	public int updateBusStop(BusStop busStop) {
+		
+		return manageBusStopData.updateBusStop(busStop);
+	}
+
 }

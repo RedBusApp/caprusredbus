@@ -1,23 +1,64 @@
 package com.caprusit.redbus.domain;
 
 import java.io.Serializable;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
 @Table(name = "Route")
 public class Route implements Serializable {
 
-	private static final long serialVersionUID = 6238086431975819538L;
+	private static final long serialVersionUID = 5825249753387850999L;
+
+	public Route() {
+		super();
+		
+	}
+	
+	public Route(int routeId) {
+		super();
+		this.routeId = routeId;
+	}
 
 	@Id
 	private int routeId;
 
 	private String source, destination;
-	
+
 	private int distance;
+
+	@ManyToMany()
+	@Fetch(FetchMode.SUBSELECT)
+	@Cascade(org.hibernate.annotations.CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.TRUE)
+	@JoinTable(name = "BusStop_Route_Table", joinColumns = { @JoinColumn(name = "Route_Id_fk",unique=false, nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "BusStop_Id_fk",unique=false, nullable = false) })
+	private Set<BusStop> SetOfbusStops;
+
+	@ManyToMany()
+	@Fetch(FetchMode.SUBSELECT)
+	@Cascade(org.hibernate.annotations.CascadeType.PERSIST)
+	@LazyCollection(LazyCollectionOption.TRUE)
+	@JoinTable(name = "Route_opearator_Table", joinColumns = { @JoinColumn(name = "Route_Id_FK",unique=false, nullable = false) }, inverseJoinColumns = { @JoinColumn(name = "operator_id_fk",unique=false, nullable = false) })
+	private Set<Operator> setOfOperators;
+	
+	@OneToMany()
+	@Fetch(FetchMode.JOIN)
+	@JoinColumn(name="Route_Id_fk")
+	@LazyCollection(LazyCollectionOption.TRUE)
+	private Set<BusDetails> setOfBusses;
 
 	public int getRouteId() {
 		return routeId;
@@ -51,15 +92,30 @@ public class Route implements Serializable {
 		this.distance = distance;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<BusStop> getSetOfbusStops() {
+		return SetOfbusStops;
 	}
 
-	@Override
-	public String toString() {
-		return "Route [routeId=" + routeId + ", source=" + source
-				+ ", destination=" + destination + ", distance=" + distance
-				+ "]";
+	public void setSetOfbusStops(Set<BusStop> setOfbusStops) {
+		SetOfbusStops = setOfbusStops;
 	}
 
+	public Set<Operator> getSetOfOperators() {
+		return setOfOperators;
+	}
+
+	public void setSetOfOperators(Set<Operator> setOfOperators) {
+		this.setOfOperators = setOfOperators;
+	}
+
+	public Set<BusDetails> getSetOfBusses() {
+		return setOfBusses;
+	}
+
+	public void setSetOfBusses(Set<BusDetails> setOfBusses) {
+		this.setOfBusses = setOfBusses;
+	}
+
+	
+	
 }

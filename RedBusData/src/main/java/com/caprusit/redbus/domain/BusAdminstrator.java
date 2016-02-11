@@ -12,6 +12,16 @@ public class BusAdminstrator implements Serializable{
 
 	private static final long serialVersionUID = 5843397054361409993L;
 
+	public BusAdminstrator() {
+		super();
+		
+	}
+	
+	public BusAdminstrator(int adminId) {
+		super();
+		this.adminId = adminId;
+	}
+
 	@Id
 	private int adminId;
 	
