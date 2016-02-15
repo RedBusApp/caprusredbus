@@ -27,7 +27,7 @@ public class BusDetails implements Serializable{
 	@Id
 	private int busId;
 
-	private int busSerialNumber;
+	private int busSerialNumber,status;
 	private String busName;
 	
     @ManyToOne(cascade=CascadeType.PERSIST)
@@ -35,11 +35,11 @@ public class BusDetails implements Serializable{
 	private BusType busType;
     
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="operarot_id_fk",nullable=false,unique=false)
+    @JoinColumn(name="operarot_id_fk") // ,nullable=false,unique=false
 	private Operator operator;
     
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="route_id_fk",nullable=false,unique=false)
+    @JoinColumn(name="route_id_fk") //,nullable=false,unique=false
 	private Route route;
 
 	public int getBusId() {
@@ -56,6 +56,14 @@ public class BusDetails implements Serializable{
 
 	public void setBusSerialNumber(int busSerialNumber) {
 		this.busSerialNumber = busSerialNumber;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
 	}
 
 	public String getBusName() {
@@ -89,14 +97,6 @@ public class BusDetails implements Serializable{
 	public void setRoute(Route route) {
 		this.route = route;
 	}
-
-	@Override
-	public String toString() {
-		return "BusDetails [busId=" + busId + ", busSerialNumber="
-				+ busSerialNumber + ", busName=" + busName + ", busType="
-				+ busType + ", operator=" + operator + ", route=" + route + "]";
-	}
-    
     
 
 	

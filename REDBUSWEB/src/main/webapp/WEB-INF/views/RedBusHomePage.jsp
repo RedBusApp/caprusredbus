@@ -1,7 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%> --%>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html ng-app="caprus_redbus">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="shortcut icon" type="image/x-icon" href="./icons/bus.png" />
@@ -9,15 +10,17 @@
 
 <link rel="stylesheet" type="text/css" href="CSS/modalstyle.css">
 
- <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
+     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.js"></script>
     <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js"></script>
+    <script src="JS/app.js"></script>
     <script src="JS/ModalJs.js"></script>
-     <script src="JS/BusStopAutoComplete.js"></script>
+    <script src="JS/controller/BusStopAutoComplete.js"></script>
+    <script src="JS/service/MyService.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     
 </head>
-<body class="container" id="body" ng-app="myApp"  ng-controller="ModalDemoCtrl">
+<body class="container" id="body" ng-controller="ModalDemoCtrl">
 <div class="row" id="signin_div">
 <a href="#" id="home_link">Home</a>
 <a href="#" id="signInLink"  ng-click="open()"><span>Sign Up / Sign In</span></a>
@@ -67,19 +70,22 @@
    <h3>Book Your Bus Tickets In Online</h3><br />
    <div id="from_date_div">
    <label >From</label>
-   <input type="text" placeholder="Enter a city" id="search_id" ng-model="from_city_id"
-   uib-typeahead="stop for stop in busstopids |filter:from_city_id" ng-keyup="getCheck()">
+   <input type="text" placeholder="Enter a city" id="search_id" ng-model="from_city_id" 
+       uib-typeahead="stop[1] for stop in busstopids |filter:$viewValue" typeahead-no-results="noResults" typeahead-input-formatter="formatSourceStopName()"  typeahead-select-on-blur="true" typeahead-select-on-exact="true" typeahead-on-select="selectedSourceBusStop($item)">  <!-- ng-model="from_city_id" -->
+   <div ng-show="noResults"><i class="glyphicon glyphicon-remove"></i> No Results Found</div>
+    
    <br /><br /><label >Date of Journey</label>
-<input type="date" id="search_id" ng-model="data_of_journey_id">
+<input type="date" id="search_id" ng-model="data_of_journey_id" >
 </div>
 <div id="direction_div">
 <span><i class="glyphicon glyphicon-resize-horizontal"></i></span>
 </div>
 <div id="to_date_div">
-<label>To</label><input type="text" placeholder="Enter a city" id="search_id" ng-model="to_city_id">
+<label>To</label><input type="text" placeholder="Enter a city" id="search_id" ng-model="to_city_id" 
+   uib-typeahead="stop[1] for stop in busstopids |filter:$viewValue" typeahead-no-results="noResults" typeahead-input-formatter="formatDestinationStopName()"  typeahead-select-on-blur="true" typeahead-select-on-exact="true" typeahead-on-select="selectedDestinationBusStop($item)">
 <br /><br /><label>Date of Return (Optional)</label>
 <input type="date" id="search_id" ng-model="data_of_return_id">
-<br /><br /> <button ng-model="search_bus_button" id="search_button" ng-click="getAllRouteBuses()" class="btn btn-danger">Search Buses</button>
+<br /><br /> <button ng-model="search_bus_button" id="search_button" ng-click="searchBusses()" class="btn btn-danger">Search Buses</button>
    </div>
 
    </div>
@@ -88,6 +94,10 @@
    <div class="row buses_result_div">
    <hr>
    <p >bus ids aftr for each:  {{busstopids}}</p>
+   <p>from city : {{from_city_id}}</p>
+   <p>Destination city : {{to_city_id}}</p>
+   <p>validation msg: {{message}}</p>
+   <p>Data returned from server : {{serverData}}</p>
    </div>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 'use strict';
 
-App.controller('ModalDemoCtrl'['$scope', 'MyService','$log',function($scope){
+App.controller('ModalDemoCtrl',['$scope','MyService','$log',function($scope,MyService){
 	
 	 $scope.busstopids=[];
 	 
@@ -14,33 +14,24 @@ App.controller('ModalDemoCtrl'['$scope', 'MyService','$log',function($scope){
 	 /*function call to getAllBusStops*/
 	 getAllBusStopsThroughHttp();
 	 
-	 
+	 /**
+	  * This function is to get all busstops from
+	  * database
+	  */
 	 function getAllBusStopsThroughHttp(){
 		 
+		 console.log("getAllBusStopsThroughHttp    executing");
+		 
 		 MyService.getAllBusStopsForAuocomplete()
-         .then(
-                      function(d) {
-                    	    console.log("in controller (retuirned from service: )"+d);
-                           self.users = d;
-                           
+                .then(
+                      function(data) {
+                    	    console.log("in controller (retuirned from service: )"+data);
+                    	    $scope.busstopids= data;                          
                       },
                        function(errResponse){
                            console.error('Error while fetching Currencies');
                        }
-              );
-		 
-		 
-		/* $http({
-             method : 'POST',
-             url : 'getAllStopsForAutoComplete.do',
-                  
-          }).success(function(data, status, headers, config) {
-    	         console.log("data eturned: "+data);
-    	         $scope.busstopids=data;
-    	        
-          }).error(function(data, status, headers, config) {
-	            $scope.result ="error occured due to internal proble please try again id auto" ;
-	      });*/
+                 );
 		 
 	  }; // END -- getAllBusStops()
 	  
@@ -153,26 +144,21 @@ App.controller('ModalDemoCtrl'['$scope', 'MyService','$log',function($scope){
 	   */
 	  function makeHttpCallToSearchForBusses(sourceStopId,destinationStopId){
 		  
-		  var object={sourceId:sourceStopId,destinationId:destinationStopId};
-		  
-		  $http({
-	             method : 'POST',
-	             url : 'searchBusBasedOnSourceAndDestinationStopIds.do?sourceId='+sourceStopId+'&destinationId='+destinationStopId,
-	             //data:object
-	                  
-	          }).success(function(data, status, headers, config) {
-	    	         console.log("data eturned: "+data);
-	    	         var result;
-	    	         if(data.length <5)
+		  MyService.searchBusBasedOnSourceAndDestination(sourceStopId,destinationStopId).then(
+				 function(successData){
+					 console.log("data--+"+successData.length +" type: "+ typeof successData+"  value: "+successData);
+					 var result;
+	    	         if(successData.length == 0)
 	    	        	 result="No busses found!!";
 	    	         else
-	    	        	 result=data;
+	    	        	 result=successData;
 	    	         $scope.serverData=result;
-	    	        
-	    	 
-	          }).error(function(data, status, headers, config) {
-		           // $scope.result ="error occured due to internal proble please try again id auto" ;
-		      });
+				 },
+				 function(error){
+					 console.log("error -- MyService.searchBusBasedOnSourceAndDestination(sourceStopId,destinationStopId)");
+				 }
+		  );
+		  
 	  
 	  };// END -- makeHttpCallToSearchForBusses(sourceStopId,destinationStopId)
 	  

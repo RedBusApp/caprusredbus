@@ -1,5 +1,6 @@
-angular.module('myApp', ['ngAnimate', 'ui.bootstrap']);
-angular.module('myApp').controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
+'use strict';
+
+App.controller('ModalDemoCtrl', function ($scope, $uibModal, $log) {
 
 
   $scope.open = function () {
@@ -15,7 +16,7 @@ angular.module('myApp').controller('ModalDemoCtrl', function ($scope, $uibModal,
   };
 });
 
-angular.module('myApp').controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
+App.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance) {
 
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');

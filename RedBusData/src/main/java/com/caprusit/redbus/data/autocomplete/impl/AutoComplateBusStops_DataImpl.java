@@ -18,6 +18,11 @@ public class AutoComplateBusStops_DataImpl  implements AutoCompleteBusStops_Data
 	@Autowired
 	private SessionFactory sessionFactory;
 
+	/**
+	 * This method is to read all bustops ids and names from database
+	 *
+	 * @return List<Object>  list of all bustop ids and names
+	 */
 	@Transactional
 	public List<Object> getAllBusStops() {
 		

@@ -55,7 +55,7 @@ public class Route implements Serializable {
 	private Set<Operator> setOfOperators;
 	
 	@OneToMany()
-	@Fetch(FetchMode.JOIN)
+	@Fetch(FetchMode.SUBSELECT) //
 	@JoinColumn(name="Route_Id_fk")
 	@LazyCollection(LazyCollectionOption.TRUE)
 	private Set<BusDetails> setOfBusses;
