@@ -41,14 +41,14 @@ public class BusStop implements Serializable{
 
 	@ManyToMany()
 	@Cascade(CascadeType.PERSIST)
-	@Fetch(FetchMode.SUBSELECT) //FetchMode.JOIN
+	@Fetch(FetchMode.SUBSELECT)
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@JoinTable(name="BusStop_Route_Table",joinColumns={@JoinColumn(name="BusStop_Id_fk",unique=false,nullable=false)},inverseJoinColumns={@JoinColumn(name="Route_Id_fk",unique=false,nullable=false)})
 	private Set<Route> setOfRoutes;
 	
 	@OneToMany()
 	@Cascade(CascadeType.PERSIST)
-	@Fetch(FetchMode.SUBSELECT) // JOIN
+	@Fetch(FetchMode.SUBSELECT)
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@JoinColumn(name="busStopId_fk")
 	private Set<BoardingPoint> setOfBoardingPoints;

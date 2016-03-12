@@ -1,8 +1,10 @@
 package com.caprusit.redbus.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -24,7 +26,7 @@ public class SearchBus_ServiceImpl implements SearchBus_Service {
 	private SearchBus_Data searchBusData;
 
 	@Autowired
-	private ManageRoute_Data manageRouteSData;
+	private ManageRoute_Data manageRouteData;
 
 	private Logger logger = Logger.getLogger(SearchBus_ServiceImpl.class);
 
@@ -40,20 +42,14 @@ public class SearchBus_ServiceImpl implements SearchBus_Service {
 	public Set<Integer> findRoutesBasedOnSouceAndDestination(int sourcebusStopId, int destinationBusStopId) {
 
 		Set<Integer> sourceRouteSet, destinationRouteSet, finalRoutesSet;
-
 		sourceRouteSet = new HashSet<Integer>(searchBusData.getListOfRoutesBasedOnStopId(sourcebusStopId));
-
 		destinationRouteSet = new HashSet<Integer>(searchBusData.getListOfRoutesBasedOnStopId(destinationBusStopId));
-
-		finalRoutesSet = new HashSet<Integer>(sourceRouteSet);
+		finalRoutesSet = new HashSet<Integer>(sourceRouteSet);		
+		//retainAll() gives intersection of two sets
 		finalRoutesSet.retainAll(destinationRouteSet);
-
 		logger.info("source routes  set: : " + sourceRouteSet);
-
 		logger.info("Destination routes  set: : " + destinationRouteSet);
-
 		logger.info("Final routes  set: : " + finalRoutesSet);
-
 		return finalRoutesSet;
 
 	}
@@ -67,13 +63,14 @@ public class SearchBus_ServiceImpl implements SearchBus_Service {
 	 */
 	public List<Bus_User_Utiltity> findBussesBasedOnRoutes(Set<Integer> routesSet) {
 
+	
 		Bus_User_Utiltity busUtuluity;
 		List<Bus_User_Utiltity> listOfBusses=new ArrayList<Bus_User_Utiltity>();
 		
 		for (Integer routeId : routesSet) {
 
 			System.out.println("route id: " + routeId);
-			Route route = manageRouteSData.loadRoute(routeId);
+			Route route = manageRouteData.loadRoute(routeId);
 			Set<BusDetails> setBusses = route.getSetOfBusses();
 			System.out.println("et of busses size: " + setBusses.size());
 			for (BusDetails bus : setBusses) {
@@ -108,8 +105,11 @@ public class SearchBus_ServiceImpl implements SearchBus_Service {
 	public String findBussesBasedOnSouceAndDestination(int sourcebusStopId,int destinationBusStopId) {
 
 		Set<Integer> routesSet = findRoutesBasedOnSouceAndDestination(sourcebusStopId, destinationBusStopId);
-		
-		return JsonUtility.converObjectTojson(findBussesBasedOnRoutes(routesSet));
+		Map<String,Object> busDetailsMap=new HashMap<String, Object>();
+		busDetailsMap.put("sourceBoardinPoints", "");
+		busDetailsMap.put("detinationBoardinPoints", "");
+		busDetailsMap.put("listOfBusses",findBussesBasedOnRoutes(routesSet) );
+		return JsonUtility.converObjectTojson(busDetailsMap);
 	}
 
 }

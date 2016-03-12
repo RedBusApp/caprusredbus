@@ -3,7 +3,6 @@ package com.caprusit.redbus.data.impl;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,7 +45,7 @@ public class ManageRoute_DataImpl implements ManageRoute_Data{
 	}
 
 	/**
-	 * This method is to lazy load Route class object from database
+	 * This method is to read Route class object from database
 	 * 
 	 * @param int Id(Primary key) of  Route class object 
 	 * @return Route  loaded route object from database
@@ -54,23 +53,6 @@ public class ManageRoute_DataImpl implements ManageRoute_Data{
 	public Route loadRoute(int routeId) {
 		
 		return (Route) curdOperationUtility.loadObjectFromDatabase(Route.class,routeId);
-	}
-
-	/**
-	 * This method is to load Route class object with early loading of BusDetails from database
-	 * 
-	 * @param int Id(Primary key) of  Route class object 
-	 * @return Route  loaded route object from database
-	 */
-   @Transactional
-   public Route loadRouteWithBusDetails(int routeId) {
-		
-	   Route route= (Route) curdOperationUtility.loadObjectFromDatabase(Route.class,routeId);
-	   
-	   // load lazy initialization collections using Hibernate.initialize()
-	   Hibernate.initialize(route.getSetOfBusses());
- 
-	   return route;
 	}
 
 

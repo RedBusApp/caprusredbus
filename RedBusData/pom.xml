@@ -16,7 +16,8 @@
 
 		<!-- properties to maintain versions of technologies used -->
 		<springFrameWork-version>4.2.1.RELEASE</springFrameWork-version>
-		<hibernate-version>4.3.11.Final</hibernate-version>
+		<!-- <hibernate-version>4.3.11.Final</hibernate-version> -->
+		<hibernate-version>5.1.0.Final</hibernate-version>
 		<log4j-version>1.2.17</log4j-version>
 
 	</properties>

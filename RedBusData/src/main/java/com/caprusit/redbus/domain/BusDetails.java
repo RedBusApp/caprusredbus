@@ -35,11 +35,11 @@ public class BusDetails implements Serializable{
 	private BusType busType;
     
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="operarot_id_fk") // ,nullable=false,unique=false
+    @JoinColumn(name="operarot_id_fk",nullable=false,unique=false)
 	private Operator operator;
     
     @ManyToOne(cascade=CascadeType.PERSIST)
-    @JoinColumn(name="route_id_fk") //,nullable=false,unique=false
+    @JoinColumn(name="route_id_fk",nullable=false,unique=false)
 	private Route route;
 
 	public int getBusId() {

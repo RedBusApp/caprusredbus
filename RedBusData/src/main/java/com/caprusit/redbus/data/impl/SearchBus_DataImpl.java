@@ -18,6 +18,19 @@ public class SearchBus_DataImpl implements SearchBus_Data{
 	
 	@Autowired
 	private CurdOperationUtility curdOperationUtility;
+
+	/**
+	 * This method is to search for bus into database
+	 * 
+	 * @param source source place of journey
+	 * @param destination destination place of journey
+	 * @return List<Object>  list of busses will go through source and destination
+	 */
+	@Transactional(readOnly=true)
+	public List<Object> searchBus(String source, String destination) {
+		return null;
+	}
+	
 	
 	
 	/**

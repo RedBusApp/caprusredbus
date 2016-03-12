@@ -38,7 +38,7 @@ public class Operator implements Serializable {
 	private String operatorPassword;
 
 	@ManyToMany(cascade=CascadeType.PERSIST)
-	@Fetch(FetchMode.SUBSELECT) // join
+	@Fetch(FetchMode.JOIN)
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@JoinTable(name="Route_opearator_Table",joinColumns={@JoinColumn(name="operator_id_fk",unique=false,nullable=false)},inverseJoinColumns={@JoinColumn(name="Route_Id_FK",unique=false,nullable=false)})
 	private Set<Route> setOfRoutes;
